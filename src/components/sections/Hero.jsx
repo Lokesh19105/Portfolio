@@ -1,8 +1,8 @@
-import * as React from "react"
 import { motion } from "framer-motion"
-import { ArrowUpRight, ArrowDown, Code, Terminal, Trophy } from "lucide-react"
-import { FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa6"
-import { Button, MotionButton } from "@/components/ui/button"
+import { ArrowUpRight, ArrowDown, Trophy } from "lucide-react"
+import { FaGithub, FaLinkedin } from "react-icons/fa6"
+import { MotionButton } from "@/components/ui/button"
+import profilePhoto from "@/assets/lokesh_profile.jpg"
 
 export default function Hero() {
   const containerVariants = {
@@ -184,7 +184,7 @@ export default function Hero() {
             className="relative z-10 w-64 h-64 md:w-80 md:h-80 rounded-[45px] overflow-hidden border-4 border-white/20 dark:border-white/10 shadow-2xl flex items-center justify-center bg-card group"
           >
             <img 
-              src="/src/assets/lokesh_profile.jpg" 
+              src={profilePhoto} 
               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
               alt="Lokesh Kumar A"
             />
@@ -199,25 +199,6 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Floating Stats Card 1: B.E. CGPA */}
-          <motion.div
-            variants={floatingVariants}
-            animate="animate"
-            custom={{ yStart: 10, yEnd: -10, xStart: -10, xEnd: 10, rStart: -5, rEnd: 5, duration: 6 }}
-            className="absolute top-10 left-4 md:-left-4 z-20 glassmorphism rounded-2xl p-4 shadow-xl flex items-center gap-3 border border-white/20"
-          >
-            <div className="w-10 h-10 rounded-xl bg-violet-500/10 flex items-center justify-center text-violet-500">
-              <Terminal className="w-5 h-5" />
-            </div>
-            <div>
-              <p className="text-[10px] text-muted-foreground uppercase font-semibold tracking-wider">
-                B.E. CGPA
-              </p>
-              <h4 className="font-heading font-extrabold text-lg text-foreground">
-                7.3 CGPA
-              </h4>
-            </div>
-          </motion.div>
 
           {/* Floating Stats Card 2: IoT Training */}
           <motion.div
