@@ -15,14 +15,14 @@ const certificationsData = [
     pdfUrl: "/certificates/A. LOKESH KUMAR.pdf",
   },
   {
-    title: "Data Structures",
-    issuer: "Infosys Springboard",
+    title: "HTML & CSS Fundamentals",
+    issuer: "CodeChef",
     icon: Network,
     color: "text-pink-500 bg-pink-500/10",
     gradient: "from-pink-500 to-rose-500",
     borderGlow: "hover:shadow-pink-500/20",
-    description: "In-depth training on algorithm efficiency, complexity analysis, and advanced memory structures.",
-    pdfUrl: "/certificates/lokesh-Practice Java.pdf",
+    description: "fundamental web development training covering HTML5, CSS3, and responsive design principles.",
+    pdfUrl: "/certificates/lokesh_076-Learn HTML _ CSS.pdf",
   },
   {
     title: "Java with Beginner DSA",
