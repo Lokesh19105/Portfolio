@@ -104,9 +104,9 @@ export default function Hero() {
             className="font-heading font-extrabold text-5xl md:text-6xl xl:text-7xl leading-tight text-foreground"
           >
             Hi, I'm{" "}
-            <span className="text-gradient-light dark:text-gradient">Lokesh</span>
+            <span className="text-gradient-light dark:text-gradient">Lokesh Kumar</span>
             <br />
-            Full-Stack Developer
+            AI Full-Stack Developer
           </motion.h1>
 
           <motion.p
