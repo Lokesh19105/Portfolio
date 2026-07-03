@@ -1,6 +1,6 @@
 import * as React from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { FolderGit2, ExternalLink, Sparkles, LayoutTemplate, BarChart3, ShoppingBag } from "lucide-react"
+import { FolderGit2, ExternalLink, Sparkles, LayoutTemplate, BarChart3, ShoppingBag, UtensilsCrossed } from "lucide-react"
 import { FaGithub } from "react-icons/fa6"
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, MotionCard } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -29,21 +29,25 @@ const projectsData = [
   },
   {
     id: 2,
-    title: "Spring Boot RESTful Book API",
-    category: "fullstack",
-    tags: ["Java", "Spring Boot", "MySQL", "Postman", "REST APIs"],
-    description: "A secure, robust backend REST API service managing data schemas, user orders, and automated catalog checks.",
-    longDescription: "A backend inventory and store catalog system utilizing Java Spring Boot framework. Uses MySQL relational tables to persist information, providing secure endpoints to manage transactions, handle auth logs, and catalog books. Tested extensively via Postman workspace collections.",
+    title: "Yumzy — Food Delivery App",
+    category: "frontend",
+    tags: ["React", "Context API", "CSS HSL Theming", "SVG Animations", "Responsive UI"],
+    description: "A full-featured food delivery web app with real-time order tracking, smart cart engine, coupon system, and simulated GPS rider animation.",
+    longDescription: "Yumzy is a premium food delivery single-page application built with React and a custom HSL-based design system. The app features a gourmet orange/peach brand theme with built-in Light/Dark mode, elegant card transitions, floating emoji animations, and fully responsive layouts. It includes a discovery dashboard with quick filters (Veg, Rated 4.5+), sorting controls, cuisine sliders, and detailed restaurant menu pages with search-in-menu, floating scroll indexes, and add-to-cart controls. The checkout supports multi-address validation, payment options, and an active coupon code engine with real-time validation.",
     features: [
-      "Spring Boot MVC backend configuration",
-      "MySQL relational schema indexing and CRUD actions",
-      "API request validation and routing endpoints",
-      "Comprehensive API endpoint assertions via Postman",
+      "Smart Cart with restaurant-lock mechanism preventing mixed orders",
+      "Active Coupon Engine: YUMZY50, SUPER30, FLAT100, FREEFEE with real-time validation",
+      "Auto-calculates Subtotal, GST (5%), Platform fee (₹5), Delivery fee (₹39)",
+      "Simulated GPS Order Tracker with SVG city grid and animated rider icon",
+      "Built-in Light/Dark Mode toggle with smooth transitions",
+      "Discovery dashboard with Veg filter, 4.5+ rated, sorting & cuisine sliders",
+      "Restaurant menu page with search-in-menu and floating scroll indexes",
+      "Order timeline: Confirmed → Kitchen Preparing → Out for Delivery → Delivered",
     ],
     github: "https://github.com",
     live: "https://example.com",
-    previewType: "api",
-    gradient: "from-blue-600/20 via-indigo-600/10 to-violet-600/20",
+    previewType: "food",
+    gradient: "from-orange-600/20 via-amber-600/10 to-rose-600/20",
   },
   {
     id: 3,
@@ -117,6 +121,67 @@ export default function Projects() {
       )
     }
 
+    if (type === "food") {
+      return (
+        <div className={baseClass}>
+          {/* Mockup food delivery app UI */}
+          <div className="absolute inset-x-0 top-0 h-8 bg-black/10 dark:bg-black/30 backdrop-blur-xs flex items-center px-4 justify-between border-b border-white/5">
+            <div className="flex gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+            </div>
+            <span className="text-[10px] font-mono text-muted-foreground">🍽️ yumzy.app</span>
+            <span className="text-[9px] font-mono text-orange-400 bg-orange-500/10 px-1.5 py-0.5 rounded">LIVE</span>
+          </div>
+
+          {/* Food app mockup content */}
+          <div className="w-full mt-6 grid grid-cols-3 gap-2 z-10">
+            {/* Mini food cards */}
+            {[
+              { emoji: "🍕", name: "Pizza", price: "₹199", rating: "4.5" },
+              { emoji: "🍔", name: "Burger", price: "₹149", rating: "4.3" },
+              { emoji: "🍜", name: "Noodles", price: "₹129", rating: "4.7" },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 + i * 0.15 }}
+                className="rounded-lg bg-black/20 border border-white/5 p-2 flex flex-col items-center gap-1"
+              >
+                <span className="text-xl">{item.emoji}</span>
+                <span className="text-[9px] font-semibold text-foreground">{item.name}</span>
+                <div className="flex items-center gap-1">
+                  <span className="text-[8px] text-orange-400">{item.price}</span>
+                  <span className="text-[7px] text-yellow-400">★{item.rating}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Bottom delivery tracker strip */}
+          <div className="absolute bottom-2 inset-x-3 rounded-lg bg-black/30 border border-white/5 p-2 flex items-center gap-2">
+            <motion.span
+              animate={{ x: [0, 60, 120] }}
+              transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+              className="text-base"
+            >
+              🛵
+            </motion.span>
+            <div className="flex-1 h-1 bg-muted/30 rounded-full overflow-hidden">
+              <motion.div
+                animate={{ width: ["10%", "45%", "80%"] }}
+                transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                className="h-full bg-gradient-to-r from-orange-500 to-amber-400 rounded-full"
+              />
+            </div>
+            <span className="text-[8px] font-mono text-emerald-400">ETA 15m</span>
+          </div>
+        </div>
+      )
+    }
+
     if (type === "api") {
       return (
         <div className={baseClass}>
@@ -133,13 +198,13 @@ export default function Projects() {
           
           {/* JSON Schema display */}
           <div className="w-full mt-6 bg-black/40 rounded-lg p-3 border border-white/5 font-mono text-[10px] text-left leading-relaxed text-blue-400 overflow-hidden select-none z-10 h-28">
-            <p className="text-zinc-500">{"{"}</p>
+            <p className="text-zinc-500">{"{"},</p>
             <p className="pl-4"><span className="text-purple-400">"status"</span>: <span className="text-emerald-400">"success"</span>,</p>
-            <p className="pl-4"><span className="text-purple-400">"data"</span>: {"{"}</p>
+            <p className="pl-4"><span className="text-purple-400">"data"</span>: {"{"},</p>
             <p className="pl-8"><span className="text-purple-400">"title"</span>: <span className="text-orange-300">"Spring Microservices"</span>,</p>
             <p className="pl-8"><span className="text-purple-400">"records"</span>: <span className="text-blue-300">1208</span></p>
-            <p className="pl-4">{"}"}</p>
-            <p className="text-zinc-500">{"}"}</p>
+            <p className="pl-4">{"}"},</p>
+            <p className="text-zinc-500">{"}"},</p>
           </div>
         </div>
       )
@@ -227,6 +292,7 @@ export default function Projects() {
           <TabsList className="mb-12">
             {[
               { id: "all", label: "All Projects" },
+              { id: "frontend", label: "Frontend" },
               { id: "fullstack", label: "Full-Stack" },
               { id: "iot", label: "IoT & Embedded" },
               { id: "cloud", label: "Cloud Computing" },

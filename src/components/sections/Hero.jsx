@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { ArrowUpRight, ArrowDown, Trophy } from "lucide-react"
+import { ArrowUpRight, ArrowDown, Trophy, Download } from "lucide-react"
 import { FaGithub, FaLinkedin } from "react-icons/fa6"
 import { MotionButton } from "@/components/ui/button"
 import profilePhoto from "@/assets/lokesh_profile.jpg"
@@ -124,6 +124,16 @@ export default function Hero() {
               >
                 View My Projects
                 <ArrowUpRight className="ml-1 w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+              </MotionButton>
+            </a>
+            <a href="/Lokesh Resume.pdf" download="Lokesh_Kumar_Resume.pdf">
+              <MotionButton
+                size="lg"
+                variant="outline"
+                className="rounded-full cursor-pointer border-primary/30 font-medium hover:bg-primary/5 text-primary group"
+              >
+                <Download className="mr-1 w-4 h-4 transition-transform group-hover:translate-y-0.5" />
+                Download Resume
               </MotionButton>
             </a>
             <a href="#contact">
