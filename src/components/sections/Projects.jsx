@@ -45,7 +45,7 @@ const projectsData = [
       "Order timeline: Confirmed → Kitchen Preparing → Out for Delivery → Delivered",
     ],
     github: "https://github.com",
-    live: "https://example.com",
+    live: "https://yumzy-food-lvj1jt63x-lokesh19105s-projects.vercel.app/",
     previewType: "food",
     gradient: "from-orange-600/20 via-amber-600/10 to-rose-600/20",
   },

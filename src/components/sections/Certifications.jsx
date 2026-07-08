@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Award, Code2, Cloud, Network, ShieldCheck, ExternalLink, FileText, X } from "lucide-react"
+import { Award, Code2, Cloud, Network, ShieldCheck, ExternalLink, FileText, X, Download, FileUser } from "lucide-react"
 import { MotionCard } from "@/components/ui/card"
 
 const certificationsData = [
@@ -43,6 +43,17 @@ const certificationsData = [
     borderGlow: "hover:shadow-cyan-500/20",
     description: "Theoretical and practical training detailing cloud models, virtualization techniques, and distributed compute instances.",
     pdfUrl: "/certificates/Cloud Computing.pdf",
+  },
+  {
+    title: "My Resume",
+    issuer: "Lokesh Kumar A",
+    icon: FileUser,
+    color: "text-amber-500 bg-amber-500/10",
+    gradient: "from-amber-500 to-orange-500",
+    borderGlow: "hover:shadow-amber-500/20",
+    description: "Full résumé detailing education, technical skills, projects, certifications, and professional experience.",
+    pdfUrl: "/certificates/Lokesh Resume.pdf",
+    isResume: true,
   },
 ]
 
@@ -136,13 +147,24 @@ export default function Certifications() {
 
                       {/* Actions */}
                       <div className="flex items-center gap-2 mt-auto">
-                        <button
-                          onClick={() => setPreviewCert(cert)}
-                          className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r ${cert.gradient} text-white hover:shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 cursor-pointer`}
-                        >
-                          <FileText className="w-3.5 h-3.5" />
-                          View
-                        </button>
+                        {cert.isResume ? (
+                          <a
+                            href={cert.pdfUrl}
+                            download="Lokesh_Kumar_Resume.pdf"
+                            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r ${cert.gradient} text-white hover:shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 cursor-pointer`}
+                          >
+                            <Download className="w-3.5 h-3.5" />
+                            Download
+                          </a>
+                        ) : (
+                          <button
+                            onClick={() => setPreviewCert(cert)}
+                            className={`flex items-center gap-1.5 px-3.5 py-2 rounded-lg text-xs font-semibold bg-gradient-to-r ${cert.gradient} text-white hover:shadow-lg hover:scale-[1.03] active:scale-[0.97] transition-all duration-200 cursor-pointer`}
+                          >
+                            <FileText className="w-3.5 h-3.5" />
+                            View
+                          </button>
+                        )}
                         <a
                           href={cert.pdfUrl}
                           target="_blank"
